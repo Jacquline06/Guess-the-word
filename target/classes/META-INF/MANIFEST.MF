@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: Sam Joseph Britto
+Build-Jdk: 17.0.10
+Implementation-Title: Guess-the-word
+Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Vendor-Id: props
+Implementation-URL: http://www.example.com
+Created-By: Maven Integration for Eclipse
+
