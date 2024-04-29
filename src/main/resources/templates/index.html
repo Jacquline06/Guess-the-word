@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Guess the Word</title>
+
+<script th:inline="javascript">
+function checkIfGameOver() {
+    var numberOfTriesRemaining = parseInt([[${remainingTries}]]);
+    alert('My tries remaining: ' + numberOfTriesRemaining);
+    if (numberOfTriesRemaining === 0) {
+        alert("Game over");
+        document.getElementById('guessedChar').disabled = true;
+        document.getElementById('try').disabled = true;
+        document.getElementById('reloadBtn').style.display = 'inline'; // Show the reload button
+    }
+}
+
+function reloadPage() {
+    window.location.reload(); // Reload the page
+}
+
+window.onload = function() {
+    checkIfGameOver(); // Call the function once the page is loaded
+};
+</script>
+</head>
+<body>
+    <h1 align="center">Guess the Word</h1>
+    <h2 align="center" th:text="${wordToDisplay}">show a random word here</h2>
+    <h2 align="center" th:text=" 'Tries Remaining:' + ${remainingTries} ">show number of tries left here</h2>
+    <hr>
+    <div align="center">
+        <form action="/go-home" method="GET">
+            <label>Guess a Char:</label> 
+            <input type="text" name="guessedChar" id="guessedChar"/>
+            <input type="submit" value="try"  id="try"/>
+            <button id="reloadBtn" style="display: none;" onclick="reloadPage()">Reload</button> <!-- Reload button hidden by default -->
+        </form>
+    </div>
+</body>
+</html>
